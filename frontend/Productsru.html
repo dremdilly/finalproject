@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="mainru.html" class="navbar-brand">
+			СуперШоп
+		</a>
+	</div>
+
+	<div class="collapse navbar-collapse" id="nav">
+		<ul class="nav navbar-nav">
+			<li><a href="Productsru.html">Продукты</a></li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
+					RU <span id="caret-1" class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu">
+					<li><a href="Productsru.html">Русский</a></li>
+					<li><a href="Products.html">English</a></li>
+				</ul>
+
+			</li>
+			<li><a href="http://localhost:3000/loginru.html">Зайти</a></li>
+			<li><a href="http://localhost:3000/registrationru.html">Регистрация <span class="glyphicon glyphicon-user"></span></a></li>
+		</ul>
+	</div>
+
+</nav>
+
+<div style="padding-top: 70px;"></div>
+<div class="row">
+
+	<div class="col-md-4">
+		<h1>Машины</h1>
+		<h3 id="displayer">Загрузка...</h3>
+	</div>
+
+	<div class="col-md-4">
+		<h1>Самолеты</h1>
+		<h3 id="displayer2">Загрузка...</h3>
+	</div>
+
+	<div class="col-md-4">
+		<h1>Мотоциклы</h1>
+		<h3 id="displayer3">Загрузка...</h3>
+	</div>
+</div>
+
+<footer class="footer-bs">
+	<div class="row">
+		<div class="col-md-3 footer-brand animated fadeInLeft">
+			<h2>СуперШоп</h2>
+			<p>Добро пожаловать в СуперШоп. Покупай наши машины, самолеты и мотоциклы! Только у нас лучшие цены и гарантия качества. Мы дорожим своими клиентами!</p>
+			<p>© 2021 BS3 UI Kit, Daurenbek Beknazarov</p>
+		</div>
+		<div class="col-md-4 footer-nav animated fadeInUp">
+
+			<div class="col-md-6">
+				<ul class="list">
+					<li><a href="#">О нас</a></li>
+					<li><a href="#">Контакты</a></li>
+					<li><a href="#">Условия</a></li>
+					<li><a href="#">Политика безопасности</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-2 footer-social animated fadeInDown">
+			<h4>Мы есть в</h4>
+			<ul>
+				<li><a href="#">Telegram</a></li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">Instagram</a></li>
+			</ul>
+		</div>
+		<div class="col-md-3 footer-ns animated fadeInRight">
+			<h4>Новостная лента</h4>
+			<p>Подпишись на нашу новостную ленту</p>
+			<p>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Найти...">
+				<span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                      </span>
+			</div>
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script>
+    {
+
+        var xmlhttp, myObj = "";
+
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("displayer").innerHTML = JSON.stringify(myObj, ["manufacturer", "model", "price"], "</br>");
+            }
+        }
+
+    xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/db.json/cars", true);
+    xmlhttp.send();
+    }
+</script>
+
+<script>
+    {
+
+        var xmlhttp, myObj = "";
+
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("displayer2").innerHTML = JSON.stringify(myObj, ["manufacturer", "model", "price"], "</br>");
+            }
+        }
+
+        xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/db.json/planes", true);
+        xmlhttp.send();
+    }
+</script>
+
+<script>
+    {
+
+        var xmlhttp, myObj = "";
+
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("displayer3").innerHTML = JSON.stringify(myObj, ["manufacturer", "model", "price"], "</br>");
+            }
+        }
+
+        xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/db.json/bikes", true);
+        xmlhttp.send();
+    }
+</script>
+</body>
+</html>

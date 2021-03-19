@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="main.html" class="navbar-brand">
+			SuperShop
+		</a>
+	</div>
+
+	<div class="collapse navbar-collapse" id="nav">
+		<ul class="nav navbar-nav">
+			<li><a href="http://localhost:3000/Products.html">Products</a></li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
+					EN <span id="caret-1" class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu">
+					<li><a href="productsru.html">Русский</a></li>
+					<li><a href="products.html">English</a></li>
+				</ul>
+
+			</li>
+			<li><a href="http://localhost:3000/login.html">Login</a></li>
+			<li><a href="http://localhost:3000/registration.html">Sign Up <span class="glyphicon glyphicon-user"></span></a>
+			</li>
+		</ul>
+	</div>
+
+</nav>
+
+<div style="padding-top: 70px;"></div>
+<div class="row">
+
+	<div class="col-md-4">
+		<h1>Cars</h1>
+		<h3 id="displayer">Loading...</h3>
+	</div>
+
+	<div class="col-md-4">
+		<h1>Planes</h1>
+		<h3 id="displayer2">Loading...</h3>
+	</div>
+
+	<div class="col-md-4">
+		<h1>Bikes</h1>
+		<h3 id="displayer3">Loading...</h3>
+	</div>
+</div>
+
+<footer class="footer-bs">
+	<div class="row">
+		<div class="col-md-3 footer-brand animated fadeInLeft">
+			<h2>SuperShop</h2>
+			<p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies.
+				Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut
+				sem.</p>
+			<p>© 2021 BS3 UI Kit, Daurenbek Beknazarov</p>
+		</div>
+		<div class="col-md-4 footer-nav animated fadeInUp">
+
+			<div class="col-md-6">
+				<ul class="list">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Contacts</a></li>
+					<li><a href="#">Terms & Condition</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-2 footer-social animated fadeInDown">
+			<h4>Follow Us</h4>
+			<ul>
+				<li><a href="#">Telegram</a></li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">Instagram</a></li>
+			</ul>
+		</div>
+		<div class="col-md-3 footer-ns animated fadeInRight">
+			<h4>Newsletter</h4>
+			<p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
+			<p>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search for...">
+				<span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                      </span>
+			</div>
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script>
+    {
+
+        var xmlhttp, myObj = "";
+
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("displayer").innerHTML = JSON.stringify(myObj, ["manufacturer", "model", "price"], "</br>");
+            }
+        }
+
+    xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/db.json/cars", true);
+    xmlhttp.send();
+    }
+</script>
+
+<script>
+    {
+
+        var xmlhttp, myObj = "";
+
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("displayer2").innerHTML = JSON.stringify(myObj, ["manufacturer", "model", "price"], "</br>");
+            }
+        }
+
+        xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/db.json/planes", true);
+        xmlhttp.send();
+    }
+</script>
+
+<script>
+
+	var prom = new Promise(function (succ, err)
+    {
+        var xmlhttp, myObj = "";
+
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                document.getElementById("displayer3").innerHTML = JSON.stringify(myObj, ["manufacturer", "model", "price"], "</br>");
+                succ();
+            } else {
+                err();
+            }
+        }
+
+        xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/db.json/bikes", true);
+        xmlhttp.send();
+    });
+
+	prom.then(
+	    function() { console.log("Status is 200")},
+        function() { console.log("Status is not 200")}
+	)
+</script>
+</body>
+</html>

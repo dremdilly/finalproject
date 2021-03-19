@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="main.html" class="navbar-brand">
+			SuperShop
+		</a>
+	</div>
+
+	<div class="collapse navbar-collapse" id="nav">
+		<ul class="nav navbar-nav">
+			<li><a href="Products.html">Products</a></li>
+			<li><a href="account.html" class="last">My Account</a></li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
+					EN <span id="caret-1" class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu">
+					<li><a href="accountru.html">Русский</a></li>
+					<li><a href="account.html">English</a></li>
+				</ul>
+
+			</li>
+			<li><a href="login.html">Exit</a></li>
+		</ul>
+	</div>
+
+</nav>
+<div style="padding-top: 70px;"></div>
+
+<div class="container">
+	<h1 id="favourites">My Favourites </br></h1>
+</div>
+
+<div class="container">
+	<div class="input-group">
+
+		<form>
+			<input type="text" class="form-control" placeholder="Car Manufacturer Name" id="searching">
+			<span class="input-group-btn">
+          <button class="btn btn-default" type="button" onclick="loadData()">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+			<div class="form-group">
+				<label class="radio-inline">
+					<input type="radio" name="optradio" id="r0" checked>All price
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="optradio" id="r1" >30000-60000
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="optradio" id="r2">60000-90000
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="optradio" id="r3">90000+
+				</label>
+			</div>
+		</form>
+		<h1 id="displayer">My object</h1>
+	</div>
+</div>
+
+<div class="container">
+
+	<table id="jobTable" class="table table-hover text-center">
+
+		<thead>
+		<tr>
+
+		</tr>
+		</thead>
+		<tbody class="contenttable">
+		<tr class="companies">
+			<td>mail@gmail.com</td>
+			<td>mylogin</td>
+			<td>1234@Qwer</td>
+		</tr>
+		</tbody>
+
+		<div class="row">
+			<td>
+				<input type="text" style="text-align: center"
+				       id="companyname"
+				/>
+			</td>
+			<td>
+				<input type="text" style="text-align: center"
+				       id="positionname"
+				/>
+			</td>
+			<td>
+				<input type="text" style="text-align: center"
+				       id="worktime"
+				/>
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" id="addButton" onclick="companyUpdate();">
+					Add &nbsp;<span class="glyphicon glyphicon-plus"></span>
+				</button>
+			</td>
+		</div>
+
+	</table>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 class="modal-title">Favourite</h3>
+			</div>
+			<div class="modal-body">
+				<div class="panel-body">
+					<h3 id="displaying">Loading...</h3>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="updateButton" class="btn btn-warning" data-dismiss="modal"
+				        onclick="addFavourite()">
+					Add
+					<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<footer class="footer-bs">
+	<div class="row">
+		<div class="col-md-3 footer-brand animated fadeInLeft">
+			<h2>SuperShop</h2>
+			<p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
+			<p>© 2021 BS3 UI Kit, Daurenbek Beknazarov</p>
+		</div>
+		<div class="col-md-4 footer-nav animated fadeInUp">
+
+			<div class="col-md-6">
+				<ul class="list">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Contacts</a></li>
+					<li><a href="#">Terms & Condition</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-2 footer-social animated fadeInDown">
+			<h4>Follow Us</h4>
+			<ul>
+				<li><a href="#">Telegram</a></li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">Instagram</a></li>
+			</ul>
+		</div>
+		<div class="col-md-3 footer-ns animated fadeInRight">
+			<h4>Newsletter</h4>
+			<p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
+			<p>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search for...">
+				<span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                      </span>
+			</div>
+			</p>
+		</div>
+	</div>
+</footer>
+
+<script>
+
+
+    var cmpn;
+    var btnid;
+    var myObj = "";
+    var num;
+    function loadData() {
+        var modelcar = document.getElementById("searching").value;
+        var option;
+        if (document.getElementById('r0').checked) {
+            option = 0;
+        } else if (document.getElementById('r1').checked) {
+            option = 1;
+        } else if (document.getElementById('r2').checked) {
+            option = 2;
+        } else if (document.getElementById('r3').checked) {
+            option = 3;
+        }
+
+        var xmlhttp = "";
+        myObj = "";
+        var text;
+
+        console.log(option);
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                if (modelcar != "") {
+                    if (option == 0) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.manufacturer.toLowerCase() == modelcar.toLowerCase()), ["model", "price"],
+	                        " ");
+                    } else if (option == 1) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.manufacturer.toLowerCase() == modelcar.toLowerCase() && myObj.price > 30000 && myObj.price < 60000), ["model", "price"], " ");
+
+                    } else if (option == 2) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.manufacturer.toLowerCase() == modelcar.toLowerCase() && myObj.price > 60000 && myObj.price < 90000), ["model", "price"], " ");
+
+                    } else if (option == 3) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.manufacturer.toLowerCase() == modelcar.toLowerCase() && myObj.price > 90000), ["model", "price"], " ");
+
+                    }
+                } else {
+                    if (option == 0) {
+                        document.getElementById("displayer").innerHTML = "";
+
+                        for(i = 0; i < myObj.length; i++) {
+                            document.getElementById("displayer").innerHTML += "</br><button class='editbtn' data-toggle='modal' data-target='#myModal' onclick='Add(this)'>Add";
+                            document.getElementById("displayer").innerHTML += JSON.stringify(myObj[i], ["manufacturer", "model", "price"], "");
+                            document.getElementById("displayer").innerHTML += "</button>";
+                        }
+                    } else if (option == 1) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.price > 30000 && myObj.price < 60000), ["manufacturer", "model", "price"], " ");
+
+                    } else if (option == 2) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.price > 60000 && myObj.price < 90000), ["manufacturer", "model", "price"], " ");
+
+                    } else if (option == 3) {
+                        document.getElementById("displayer").innerHTML = JSON.stringify(myObj.filter(myObj => myObj.price > 90000), ["manufacturer", "model", "price"], " ");
+
+                    }
+                }
+            }
+
+        };
+
+        xmlhttp.open("GET", "https://my-json-server.typicode.com/dremdilly/dbjson/cars", true);
+        xmlhttp.send();
+    }
+
+    function companyUpdate() {
+        if ($("#companyname").val() != null && $("#companyname").val() != '') {
+            companyAddToTable();
+
+            formClear();
+
+            $("#companyname").focus();
+        }
+    }
+
+    function companyAddToTable() {
+
+        $(".contenttable").append(
+            "<tr>" +
+            "<td>" + $("#companyname").val() + "</td>" +
+            "<td>" + $("#positionname").val() + "</td>" +
+            "<td>" + $("#worktime").val() + "</td>" +
+            "</tr>"
+        );
+    }
+
+    function Add(ctl) {
+        var btnid = $(ctl);
+        console.log(btnid);
+        document.getElementById("displaying").innerHTML = btnid[0].nextSibling.textContent;
+    }
+
+    function addFavourite() {
+        document.getElementById("favourites").innerHTML += document.getElementById("displaying").innerHTML;
+    }
+</script>
+</body>
+</html>
